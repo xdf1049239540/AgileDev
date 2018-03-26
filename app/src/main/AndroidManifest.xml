@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lodz.android.agiledev">
+
+    <!-- 联网 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 震动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- ********************* 需要申请（只要同组有一个授权整组的权限都可以使用） ********************* -->
+    <!-- 相机 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--允许读取手机信息权限-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!-- 写存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 读存储 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 录制音频 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.lodz.android.agiledev.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
+        <meta-data
+            android:name="error_tag"
+            android:value="errortag" />
+
+        <meta-data
+            android:name="com.lodz.android.imageloader.glide.config.CacheGlideModule"
+            android:value="GlideModule" />
+
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:label="主页面"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name="com.lodz.android.agiledev.ui.other.MainActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.premissions.PremissionsActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.premissions.DeviceActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.other.TestActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.other.Test2Activity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.other.TitleBarTestActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.rv.refresh.RefreshTestActivity"
+            android:label="刷新/加载更多测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.rv.drag.DragRecyclerViewActivity"
+            android:label="视频录制测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.reflect.ReflectActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.rv.head.HeadRecyclerViewActivity"
+            android:label="RV头/底部测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.image.GlideActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.fragmentactivity.LoginActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.tab.TabActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.fragmentlife.FragmentLifeTestActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.dialog.DialogTestActivity"
+            android:label="弹框测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.config.ConfigLayoutActivity"
+            android:label="基础控件配置测试类"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.mvp.abs.activity.MvpTestAbsActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.mvp.base.activity.MvpTestBaseActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.mvp.refresh.activity.MvpTestRefreshActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.mvp.MvpFragmentActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
+        <activity
+            android:name=".ui.jump.AzActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.jump.BzActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.jump.CzActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.jump.DzActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.rv.swipe.SwipeRecyclerViewActivity"
+            android:label="RV侧滑菜单测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.media.RecordActivity"
+            android:label="视频录制测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.rv.anim.AnimRecyclerViewActivity"
+            android:label="RV动画测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.crash.CrashTestActivity"
+            android:label="崩溃测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+        <activity
+            android:name=".ui.photopicker.PhotoPickerTestActivity"
+            android:label="照片选择器测试"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+    </application>
+
+</manifest>

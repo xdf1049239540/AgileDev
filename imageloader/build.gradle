@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 26
+        versionCode 15
+        versionName "1.1.7"// 成功上传
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+
+    provided 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:support-annotations:27.0.0'
+
+    // fresco
+    provided 'com.facebook.fresco:fresco:1.5.0'
+    provided 'com.facebook.fresco:imagepipeline-okhttp3:1.5.0'
+
+    // glide
+    provided 'com.github.bumptech.glide:glide:3.8.0'
+    provided 'com.github.bumptech.glide:okhttp3-integration:1.5.0@aar'
+
+}
+
+publish {
+    userOrg = 'xd1049239540'//bintray.com用户名
+    groupId = 'com.xdf'//jcenter上的路径
+    artifactId = 'ImagerLoader'//项目名称
+    publishVersion = '1.1.7'//版本号
+    desc = 'Hi, this is a image loader'//描述，不重要
+    website = 'https://github.com/xdf'//网站，不重要
+}

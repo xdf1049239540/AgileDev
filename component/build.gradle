@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 39
+        versionName "1.3.8"// 未上传
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+dependencies {
+    // 引用的库
+//    compile 'cn.lodz:core:1.1.5'
+    compile project(':core')
+
+    // RxJava
+    compile 'io.reactivex.rxjava2:rxjava:2.1.6'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    // Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    compile 'com.alibaba:fastjson:1.2.40'
+    // RxJava生命周期
+    compile 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.0'
+    compile 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.0'
+    // EventBus
+    compile 'org.greenrobot:eventbus:3.1.1'
+
+//    compile 'com.hannesdorfmann.mosby3:mvp:3.0.4'
+}
+
+publish {
+    userOrg = 'xd1049239540'//bintray.com用户名
+    groupId = 'com.xdf'//jcenter上的路径
+    artifactId = 'Component'//项目名称
+    publishVersion = '1.3.7'//版本号
+    desc = 'Hi, this is a android base library'//描述，不重要
+    website = 'https://github.com/xdf'//网站，不重要
+}

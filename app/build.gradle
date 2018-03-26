@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+
+    defaultConfig {
+        applicationId "com.lodz.android.agiledev"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+
+    //日志开关
+    def LOG_DEBUG = "LOG_DEBUG"
+    defaultConfig {
+        buildConfigField "boolean", LOG_DEBUG, "true"
+    }
+
+    // 程序在编译的时候会检查lint，有任何错误提示会停止build，我们可以关闭这个开关
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    buildTypes {
+
+        debug {//debug版本的配置
+            minifyEnabled false // 是否进行混淆
+            zipAlignEnabled false // 是否支持zip
+            debuggable true // 是否支持调试
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField "boolean", LOG_DEBUG, "false"
+            minifyEnabled false // 是否进行混淆
+            zipAlignEnabled true // 是否支持zip
+            debuggable false // 是否支持调试
+            jniDebuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def newName
+            if (variant.baseName.endsWith('release')) {
+                def formattedDate = new Date().format('yyyyMMddHHmm')
+                newName = "AgileDev-v" + defaultConfig.versionName + "-" + variant.baseName + "-" + formattedDate + ".apk"
+            } else {
+                newName = "AgileDev-v" + defaultConfig.versionName + "-" + variant.baseName + ".apk"
+            }
+            outputFileName = newName
+        }
+    }
+
+}
+
+dependencies {
+    compile project(':component')
+    compile project(':imageloader')
+
+    // 权限申请
+    compile 'com.github.hotchemi:permissionsdispatcher:3.0.1'
+    annotationProcessor 'com.github.hotchemi:permissionsdispatcher-processor:3.0.1'
+    // butterknife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // fresco
+//    compile 'com.facebook.fresco:fresco:1.5.0'
+//    compile 'com.facebook.fresco:animated-gif:1.5.0'// 支持 GIF 动图，需要添加
+//    compile 'com.facebook.fresco:animated-webp:1.5.0'// 在 API < 14 上的机器支持 WebP 时，需要添加
+//    compile 'com.facebook.fresco:animated-base-support:1.3.0'// 支持 WebP 动图，需要添加
+//    compile 'com.facebook.fresco:webpsupport:1.5.0'// 支持 WebP 静态图，需要添加
+//    compile 'com.facebook.fresco:imagepipeline-okhttp3:1.5.0'// 支持 OkHttp3，需要添加
+
+    // glide
+    compile 'com.github.bumptech.glide:glide:3.8.0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:1.5.0@aar'
+
+    // 下载
+    compile 'zlc.season:rxdownload2:2.0.4'
+
+    // leakcanary
+//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+//    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
+
+}
